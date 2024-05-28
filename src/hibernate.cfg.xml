@@ -1,0 +1,20 @@
+<hibernate-configuration>
+<session-factory>
+<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+<property name="connection.url">jdbc:oracle:thin:@//localhost:1521/xepdb1</property>
+<property name="connection.username">***</property>
+<property name="connection.password">***</property>
+<property name="connection.pool_size">3</property>
+<property name="dialect">org.hibernate.dialect.Oracle12cDialect</property>
+<property name="current_session_context_class">thread</property>
+<property name="show_sql">true</property>
+<property name="format_sql">true</property>
+<property name="hbm2ddl.auto">update</property>
+<mapping class="com.jsf.beans.Student"/>
+<mapping class="com.jsf.beans.Course"/>
+<mapping class="com.jsf.beans.Doctor"/>
+<mapping class="com.jsf.beans.JoinCourseStudent"/>
+
+
+</session-factory>
+</hibernate-configuration>

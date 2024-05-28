@@ -1,0 +1,106 @@
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+    	<title>
+    		Doctor List Demo
+    		
+    	</title>
+    	<h:outputStylesheet library="css" name="form.css"></h:outputStylesheet>
+    	<h:outputStylesheet library="css" name="student_table_demo.css"></h:outputStylesheet>
+    	
+    </h:head>
+    
+    <h:body>
+    	<h2>
+    	Welcome in Dr.#{ddd.name} window
+    	</h2>
+    	
+   		 
+    	
+    	<h:form>
+    	<p:commandButton value="Logout" action="#{ddd.doctorLogout()}" styleClass="ui-button-danger" style="float:right;"/>
+    	
+    	 <p:commandButton value="Create Course" action="#{ddd.toCreateCourse()}" styleClass="ui-button-success" style="float:left;"/>
+    	 
+    	<br/>
+    	<br/>
+    	<br/> 
+    	 <p:commandButton value=" Add Student " action="#{ddd.tocreateStudent()}" styleClass="ui-button-success" style="float:left;"/>
+    	<br/>
+    	<br/>
+    	<br/>
+    	
+    	<h3>Please choose which course:</h3>
+    	
+    	  <div class="ui-fluid formgrid grid">
+            <div class="field col-12 md:col-4">
+            	<p:selectOneMenu id="option" value="#{ddd.selectedCourse}"  style="width:200px">
+                    <f:selectItems value="#{ddd.getDoctorCoursesName()}"/>
+                </p:selectOneMenu>
+            </div>
+         </div>
+         
+         <br/>
+    	<br/>
+         <h:commandButton value="get students" action="#{ddd.getStudentsByCourseName()}" style="float:left;"></h:commandButton>
+    	<br/>
+    	<br/>
+    	
+<!--     	<div class="ui-fluid formgrid grid"> -->
+<!--             <div class="field col-12 md:col-4"> -->
+<!-- 		    	<p:selectOneRadio id="option" value="#{ddd.selectedCourse}" layout="lineDirection"> -->
+<!-- 		    		<f:selectItems value="#{ddd.getDoctorCoursesName()}"/>  -->
+<!-- 		    		<f:ajax render="table" ></f:ajax>       			 -->
+<!-- 		    	</p:selectOneRadio> -->
+<!-- 	    	</div> -->
+<!--     	</div> -->
+    	
+    	
+    	
+    	
+    	
+    	
+    	<h3>List of students associated to course #{ddd.selectedCourse}</h3>
+    	
+    	<h:dataTable value="#{ddd.getStudentsByCourseName()}" var="tempStudent"  
+    					styleClass="demo-table"
+    					id="table"
+    					headerClass="demo-table-header"
+    					rowClasses="demo-table-odd-row,demo-table-even-row">
+    	
+    	
+    	<h:column>
+    	<f:facet name="header">Student Id</f:facet>
+    	#{tempStudent.id} 
+    	</h:column>
+    	
+    	<h:column>
+    	<f:facet name="header">Student Name</f:facet>
+    	#{tempStudent.userName}
+    	</h:column>
+    	
+    	<h:column>
+    	<f:facet name="header">Course Name</f:facet>
+    	#{ddd.selectedCourse}
+    	</h:column>
+    	
+    	<h:column>
+    	<f:facet name="header">Delete</f:facet>
+    		<p:commandLink action="#{ddd.deassignStudent(tempStudent)}" class="mr-4" ajax="false"
+                       value="Deassign"/>
+    	
+    	</h:column>
+    	
+    	</h:dataTable>
+    	
+    	    	
+    	</h:form>
+    </h:body>
+    
+    
+    </html>

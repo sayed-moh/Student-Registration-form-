@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    <title>Doctor Login Form </title>
+    <h:outputStylesheet library="css" name="form.css"></h:outputStylesheet>
+    	
+    </h:head>
+
+    <h:body>
+    <div class="form-box">
+        <h2>Doctor Log In Form</h2>
+        <h:form>
+        <p:commandLink id="back" action="#{ddd.backToRegistration()}" class="mr-4" ajax="false"
+                       value="Back"/>
+        </h:form>
+        <h:form>
+        
+            <label for="userName">User Name:</label>
+            <h:inputText type="text" id="name" name="name" class="long-input" value="#{ddd.name}" required="true" requiredMessage="You must insert your name"/>
+            
+            <label for="password">Password:</label>
+            <p:password type="password" id="toggle"  toggleMask="true"  class="long-input" value="#{ddd.password}"  required="true" requiredMessage="You must insert your password" />
+            
+
+            <br/>
+            <h:commandButton id="Submit" type="submit" value="Submit" action="#{ddd.doctorLogin()}" />
+           
+           <h:messages styleClass="error"/>
+         </h:form>
+      </div>
+
+         
+    </h:body>
+</html>

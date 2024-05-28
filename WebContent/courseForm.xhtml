@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+    <title>Add New Course Form </title>
+    <h:outputStylesheet library="css" name="form.css"></h:outputStylesheet>
+    	
+    </h:head>
+
+    <h:body>
+    <div class="form-box">
+        <h2>Add New Course Form</h2>
+        <h:form>
+            <label for="Name">Course Name:</label>
+            <h:inputText type="text" id="Name" name="Name" class="long-input" value="#{ccc.name}" required="true" requiredMessage="The course name is mandatory"/>
+            <h:message for="Name" styleClass="error" style="color:red" ></h:message>
+            
+            <label for="Appr">Appreviation:</label>
+            <h:inputText type="Appr" id="Appr"  class="long-input" value="#{ccc.appr}" required="true" requiredMessage="The appreviation of the course is mandatory"/>
+			<h:message for="Appr" styleClass="error" style="color:red" ></h:message>
+            
+            <br/>
+            <h:commandButton type="submit" value="Add Course" action="#{ccc.createCourse(ddd.id)}"/>
+            
+            
+         </h:form>
+     </div>
+         
+    </h:body>
+</html>
